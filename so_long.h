@@ -13,11 +13,17 @@ typedef struct game_definitions
     char	**map_ready;
     
     void	*mlx_window;
-    void	*mlx_connection;
+    void	*mlx_connect;
+
+    void    *floor;
+	void    *walls;
 
 } game_def;
 
 int     read_map(game_def *so_long, char *map);
+//void  grafics(game_def *so_long);
+void    xpm_images(game_def *so_long);
+void        put_in_screen(game_def *so_long);
 //void    print_map(char **map_ready);
 //char    **check_map(char *map_raw);
 
