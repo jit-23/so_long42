@@ -2,8 +2,8 @@
 
 void xpm_images(game_def *so_long)
 {
-    int i;
-    int j;
+    int image_width;
+    int image_height;
     // mlx_put_image_to_window(so_long->mlx_connect,
     //                                         so_long->mlx_window,
     //                                         so_long->floor,
@@ -11,30 +11,32 @@ void xpm_images(game_def *so_long)
     //                                         so_long->map_y * 100);
     
     so_long->floor = mlx_xpm_file_to_image(so_long->mlx_connect,
-                                            "grass.xpm", &i, &j);
-    
+                                            "textures/grass.xpm", &image_width, &image_height);
+    so_long->walls = mlx_xpm_file_to_image(so_long->mlx_connect,
+                                            "textures/box.xpm", &image_width, &image_height);
 }
 void put_in_screen(game_def *so_long)
 {
     int x;
     int y;
 
-     x = 0;
-    while (x < so_long->map_x)
+     y = 0;
+    while (y < so_long->map_y)
     {
-        y = 0;
-        while(so_long->map_ready[x][y])
+        x = 0;
+        while(x < so_long->map_x)
         {
-                    printf("FLAG....\n");
-                    printf("x - %d || y - %d\n", x, y);
+//                    printf("FLAG....\n");
+                   // printf("x - %d || y - %d\n", x, y);
+                    printf("array[%d][%d] = %c\n",y,x, so_long->map_ready[y][x]);
 
-            if (so_long->map_ready[x][y] == '1' || so_long->map_ready[x][y] == '0')
-               mlx_put_image_to_window(so_long->mlx_connect,
-					so_long->mlx_window, so_long->floor, x * 40, y * 40);
-                    printf("ssss\n");
-            y++;
+           /*  if (so_long->map_ready[x][y] == '0')
+                mlx_put_image_to_window(so_long->mlx_connect,so_long->mlx_window, so_long->floor, x * 40, y * 40);
+            if (so_long->map_ready[x][y] == '1')
+                mlx_put_image_to_window(so_long->mlx_connect,so_long->mlx_window, so_long->floor, x * 40, y * 40); */
+            x++;
         }
-        x++;
+        y++;
     } 
 }
 

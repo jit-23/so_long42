@@ -17,14 +17,15 @@ typedef struct game_definitions
 
     void    *floor;
 	void    *walls;
+    void    *exit;
 
 } game_def;
 
 int     read_map(game_def *so_long, char *map);
-//void  grafics(game_def *so_long);
 void    xpm_images(game_def *so_long);
 void        put_in_screen(game_def *so_long);
-//void    print_map(char **map_ready);
-//char    **check_map(char *map_raw);
+int command_input(int key_command, game_def *so_long);
+int check_rectangle(game_def *so_long);
+void exit_window(game_def *so_long);
 
 #endif
