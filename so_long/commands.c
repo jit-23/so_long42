@@ -6,7 +6,7 @@
 /*   By: fde-jesu <fde-jesu@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 16:04:47 by fde-jesu          #+#    #+#             */
-/*   Updated: 2023/10/03 16:31:55 by fde-jesu         ###   ########.fr       */
+/*   Updated: 2023/10/03 16:33:31 by fde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,7 @@ int command_input(int key_command, game_def *so_long)
 {
     //int key;
 	printf("...%d\n", key_command);
-    if (key_command == 65307|| key_command == 113 )
+    if (key_command == 65307|| key_command == 113)
         exit_window(so_long);
-    
-    
     return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: fde-jesu <fde-jesu@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 15:59:43 by fde-jesu          #+#    #+#             */
-/*   Updated: 2023/09/26 17:34:55 by fde-jesu         ###   ########.fr       */
+/*   Updated: 2023/10/03 17:45:56 by fde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,12 +31,17 @@ int main(int argc, char **argv)
         printf("dam, wrong\n");
     if (check_rectangle(&so_long) == 1)
         printf("wrong size (x/y)\n");
-    so_long.mlx_connect = mlx_init();
+ /*    so_long.mlx_connect = mlx_init();
     so_long.mlx_window = mlx_new_window(so_long.mlx_connect,
                                         so_long.map_x * 50,
                                         so_long.map_y * 50,
-                                        "so_long42");
+                                        "so_long42"); */
     //grafics(&so_long);
+    
+    so_long.mlx_connect = mlx_init();
+	size_window_init(&so_long);
+	so_long.mlx_window = mlx_new_window(so_long.mlx_window, so_long.map_width, so_long.map_height , "so_long");
+	
     
     xpm_images(&so_long);
     //put_in_screen(&so_long);
