@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fde-jesu <fde-jesu@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: fde-jesu <fde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 18:49:06 by fde-jesu          #+#    #+#             */
-/*   Updated: 2023/09/14 17:32:11 by fde-jesu         ###   ########.fr       */
+/*   Updated: 2023/10/16 16:18:30 by fde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	ft_strlen(const char *str)
 {
 	int	i;
-
+	
 	i = 0;
 	while (str[i])
 		i++;

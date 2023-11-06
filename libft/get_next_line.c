@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fde-jesu <fde-jesu@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: fde-jesu <fde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/21 22:45:31 by fde-jesu          #+#    #+#             */
-/*   Updated: 2023/09/19 15:41:34 by fde-jesu         ###   ########.fr       */
+/*   Updated: 2023/10/16 16:29:10 by fde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,20 +105,18 @@ char	*get_next_line(int fd)
 	fd_str = ft_move_start(fd_str);
 	return (line);
 }
-
-// int main()
-// {
-// 	int fd;
-// 	fd = open("map.txt", O_RDONLY);
-// 	char *ptr;
-// 	ptr = (char *)1;
-// 	while (ptr != NULL)
-// 	{
-// 		printf("flag1\n");
-// 		ptr = get_next_line(fd);
-// 		printf("%s\n", ptr);
-// 		free(ptr);
-// 	}
-// 	close(fd);
-// 	return(0);
-// }
+/* int main()
+{
+	int fd;
+	fd = open("../map.ber", O_RDONLY);
+	char *ptr;
+	ptr = (char *)1;
+	while (ptr != NULL)
+	{
+		ptr = get_next_line(fd);
+		printf("%s", ptr);
+		free(ptr);
+	}
+	close(fd);
+	return(0);
+} */

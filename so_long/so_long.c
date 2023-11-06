@@ -3,52 +3,48 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fde-jesu <fde-jesu@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: fde-jesu <fde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/21 15:59:43 by fde-jesu          #+#    #+#             */
-/*   Updated: 2023/10/03 17:45:56 by fde-jesu         ###   ########.fr       */
+/*   Created: 2023/11/03 17:34:40 by fde-jesu          #+#    #+#             */
+/*   Updated: 2023/11/06 03:22:59 by fde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "../so_long.h"
 
-int main(int argc, char **argv)
+
+void game_init(char *map_name)
 {
-    int i;
-    game_def    so_long;
+    game_def sl;
 
-    if (argc != 2)
+    ft_bzero(&sl, sizeof(game_def));
+    sl.xpm = calloc(5, sizeof(t_image));
+    sl.map_ready = ft_calloc(sl.map_y + 1, sizeof(char *));
+    map_size(&sl,map_name);
+    read_map(&sl, map_name);
+    if(check_all(&sl) != 0)
     {
-        printf("wrong number of arguments\n");
-        return (0);
-    } 
-    ft_memset(&so_long,0 ,sizeof(game_def));
-    i = ft_strlen(argv[1]) - 1;
-    if (argv[1][i - 3] == '.' && argv[1][i - 2] == 'b' && argv[1][i - 1] == 'e' && argv[1][i] == 'r')
-        i = read_map(&so_long,argv[1]);
-    else
-        printf("dam, wrong\n");
-    if (check_rectangle(&so_long) == 1)
-        printf("wrong size (x/y)\n");
- /*    so_long.mlx_connect = mlx_init();
-    so_long.mlx_window = mlx_new_window(so_long.mlx_connect,
-                                        so_long.map_x * 50,
-                                        so_long.map_y * 50,
-                                        "so_long42"); */
-    //grafics(&so_long);
+        printf("map not valid\n"); 
+        //error_map(&sl);
+        exit(1);
+    }
+    sl.mlx_con = mlx_init();
+    sl.mlx_win = mlx_new_window(sl.mlx_con, sl.map_x * PIXEL,sl.map_y * PIXEL,"sl");
+    put_in_screen(&sl);
     
-    so_long.mlx_connect = mlx_init();
-	size_window_init(&so_long);
-	so_long.mlx_window = mlx_new_window(so_long.mlx_window, so_long.map_width, so_long.map_height , "so_long");
-	
-    
-    xpm_images(&so_long);
-    //put_in_screen(&so_long);
+  ///  printf("\tinicial coordinates %d %d\n",sl.player_y,sl.player_x);
+    sl.coins = 1;
+    mlx_key_hook(sl.mlx_win, command_input, &sl);
+    mlx_hook(sl.mlx_win, 17, 0, (void *)exit, 0);
+    mlx_loop(sl.mlx_con);
 
-    mlx_hook(so_long.mlx_window, 17, 0, (void *)exit, 0);
-    mlx_key_hook(so_long.mlx_window, command_input, &so_long);
+}
+
+int main(int argc, char *argv[])
+{
+    if(argc != 2)
+        return (1);
+    game_init(argv[1]);
     
-    mlx_loop(so_long.mlx_connect);
-    return(0);
+    return (0);
 }

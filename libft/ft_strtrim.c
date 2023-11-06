@@ -6,7 +6,7 @@
 /*   By: fde-jesu <fde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 20:07:09 by fde-jesu          #+#    #+#             */
-/*   Updated: 2023/04/26 22:17:44 by fde-jesu         ###   ########.fr       */
+/*   Updated: 2023/10/14 15:37:01 by fde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,3 +35,9 @@ char	*ft_strtrim(char const *s1, char const *set)
 	str[(j - i) + 1] = '\0';
 	return (str);
 }
+/* int main()
+{
+	char name[] = "fernando";
+	char const n[] = "fo";
+	printf("%s", ft_strtrim(name, n));	
+} */

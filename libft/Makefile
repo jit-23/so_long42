@@ -3,16 +3,15 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: fde-jesu <fde-jesu@student.42porto.com>    +#+  +:+       +#+         #
+#    By: fde-jesu <fde-jesu@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/23 21:29:48 by fde-jesu          #+#    #+#              #
-#    Updated: 2023/09/18 15:35:43 by fde-jesu         ###   ########.fr        #
+#    Updated: 2023/10/04 19:15:06 by fde-jesu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libft.a
 HEADER = libft.h
-OPTION = -c -I $(HEADER)
 CFLAGS = -Wall -Werror -Wextra
 
 FUN = ft_isalpha.c \
@@ -71,7 +70,7 @@ OBJ = ${FUN:.c=.o}
 all: $(NAME)
 
 $(NAME):
-	      cc -g ${CFLAGS} -c -I ${HEADER} ${FUN}
+	      cc -g ${CFLAGS} -c -I. ${HEADER} ${FUN}
 		ar rcs ${NAME} ${OBJ}
 
 #bonus:	${OBJ_FUN} ${OBJ}
@@ -87,3 +86,4 @@ fclean: clean
 re: fclean all
 
 .PHONY: all clean fclean re
+.SILENT:

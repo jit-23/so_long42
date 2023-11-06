@@ -1,51 +1,61 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   interface.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: fde-jesu <fde-jesu@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/11/05 01:28:22 by fde-jesu          #+#    #+#             */
+/*   Updated: 2023/11/06 03:26:21 by fde-jesu         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../so_long.h"
 
- void xpm_images(game_def *so_long)
-{   
-    so_long->floor = mlx_xpm_file_to_image(so_long->mlx_connect,
-                                            "textures/grass.xpm", &so_long->image_width, &so_long->image_height);
-    so_long->walls = mlx_xpm_file_to_image(so_long->mlx_connect,
-                                            "textures/box.xpm", &so_long->image_width, &so_long->image_height);
-} 
 
-void	put_image(game_def *so_long, void *image, int x, int y)
+void xpm_allocation(game_def *sl)
 {
-	mlx_put_image_to_window
-		(so_long->mlx_connect, so_long->mlx_window, image, x * 32, y * 32);
+    sl->xpm[0].img = mlx_xpm_file_to_image(sl->mlx_con,"textures/grass.xpm",&(sl->xpm[0].x),&(sl->xpm[0].y));
+    sl->xpm[1].img = mlx_xpm_file_to_image(sl->mlx_con,"textures/wall.xpm",&(sl->xpm[1].x),&(sl->xpm[1].y));
+    sl->xpm[2].img = mlx_xpm_file_to_image(sl->mlx_con,"textures/exit.xpm",&(sl->xpm[2].x),&(sl->xpm[2].y));
+    sl->xpm[3].img = mlx_xpm_file_to_image(sl->mlx_con,"textures/Star.xpm",&(sl->xpm[3].x),&(sl->xpm[3].y));
+    sl->xpm[4].img = mlx_xpm_file_to_image(sl->mlx_con,"textures/Fox.xpm",&(sl->xpm[4].x),&(sl->xpm[4].y));
+    
 }
-
-void	size_window_init(game_def *so_long)
-{
-	int	i;
-
-	so_long->map_x = ft_strlen(so_long->map_ready[0]) * 32;
-	i = 0;
-	while (so_long->map_ready[i] != NULL)
-		i++;
-	so_long->map_y = i * 32;
-}
-
-void put_in_screen(game_def *so_long)
+void put_in_screen(game_def *sl)
 {
     int x;
     int y;
 
-     y = 0;
-    while (so_long->map_ready[y]) // y < so_long->map_y
-    {
+    printf("5.1\n");
+    xpm_allocation(sl);
+    y = 0;
+    //printf("map_y(cols) = %d \t map_y(cols) = %d\n",sl->map_y,sl->map_x);
+    while (y < sl->map_y) // y < sl->map_y    sl->map_ready[y]
+     {
         x = 0;
-        while(so_long->map_ready[y][x]) // x < so_long->map_x
+        while( x < sl->map_x) // sl->map_ready[y][x] x < sl->map_x
         {
-//                    printf("FLAG....\n");
-                   // printf("x - %d || y - %d\n", x, y);
-                   // printf("array[%d][%d] = %c\n",y,x, so_long->map_ready[y][x]);
-
-            if (so_long->map_ready[x][y] == '0')
-                put_image(so_long, so_long->walls, x, y);
-            if (so_long->map_ready[x][y] == '1')
-                put_image(so_long, so_long->floor, x, y);
+            //printf("mp[%d][%d] = %c \t",y,x, sl->map_ready[y][x]);
+            
+            if (sl->map_ready[y][x] == '0')
+                mlx_put_image_to_window(sl->mlx_con,sl->mlx_win,sl->xpm[0].img,x * PIXEL, y * PIXEL);
+            if (sl->map_ready[y][x] == '1')
+                mlx_put_image_to_window(sl->mlx_con,sl->mlx_win,sl->xpm[1].img,x * PIXEL, y * PIXEL);
+            if (sl->map_ready[y][x] == 'E')
+                mlx_put_image_to_window(sl->mlx_con,sl->mlx_win,sl->xpm[2].img,x * PIXEL, y * PIXEL);
+            if (sl->map_ready[y][x] == 'C')
+                mlx_put_image_to_window(sl->mlx_con,sl->mlx_win,sl->xpm[3].img,x * PIXEL, y * PIXEL);
+            if (sl->map_ready[y][x] == 'P')
+                {
+                    mlx_put_image_to_window(sl->mlx_con,sl->mlx_win,sl->xpm[4].img,x * PIXEL, y * PIXEL);
+                    sl->player_x = x;
+                    sl->player_y = y;
+                }
             x++;
         }
         y++;
+       // printf("\n");
+//        printf("y = %d\n", y);
     } 
 }

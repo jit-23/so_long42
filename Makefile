@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: fde-jesu <fde-jesu@student.42porto.com>    +#+  +:+       +#+         #
+#    By: fde-jesu <fde-jesu@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/18 16:01:20 by fde-jesu          #+#    #+#              #
-#    Updated: 2023/09/25 16:59:19 by fde-jesu         ###   ########.fr        #
+#    Updated: 2023/11/06 00:27:11 by fde-jesu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,8 @@ NAME = solong.a
 HEADER = so_long.h
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
-FUN =	so_long/so_long.c so_long/map_check.c so_long/interface.c so_long/commands.c so_long/errors.c
+FUN = so_long/so_long.c so_long/read_map.c so_long/interface.c  so_long/commands.c \
+		so_long/check_map.c so_long/P_moves.c
 OBJ = ${FUN:.c=.o}
 MAKE = make -C
 LIBFT = -L libft -lft
