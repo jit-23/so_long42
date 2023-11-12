@@ -40,7 +40,10 @@ typedef struct game_definitions
     int player_steps;
     int player_x; 
     int player_y;
+	int player_y_bf;
+	int player_x_bf;
 }					game_def;
+
 
 
 void map_size(game_def *so_long, char *map_name);
@@ -57,4 +60,8 @@ void error_map(game_def *sl);
 int keys_AD(int key_command,game_def *sl);
 int keys_WS(int key_command,game_def *sl);
 int    player_move(game_def *sl, int j, int i);
+int flood_fill(game_def *sl,char  **map_copy, int x,int y);
+int check_path(game_def *sl);
+void line_sizes(game_def *sl);
+
 #endif

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map_check.c                                        :+:      :+:    :+:   */
+/*   read_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fde-jesu <fde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/05 00:15:50 by fde-jesu          #+#    #+#             */
-/*   Updated: 2023/11/05 18:31:16 by fde-jesu         ###   ########.fr       */
+/*   Updated: 2023/11/12 09:43:40 by fde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,10 @@ void map_size(game_def *so_long, char *map_name)
 			break ;
 		so_long->map_x = ft_strlen(line);
 		so_long->map_y++;
-        
 	}
     free(line);
 	close(so_long->fd);
+	
 }
 int read_map(game_def *so_long, char *map)
 {

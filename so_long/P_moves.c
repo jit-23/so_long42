@@ -6,7 +6,7 @@
 /*   By: fde-jesu <fde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/05 20:31:48 by fde-jesu          #+#    #+#             */
-/*   Updated: 2023/11/06 04:10:54 by fde-jesu         ###   ########.fr       */
+/*   Updated: 2023/11/11 23:42:37 by fde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,12 @@
 
 int    player_move(game_def *sl, int j, int i)
 {
+    sl->player_x_bf = sl->player_x;
+    sl->player_y_bf = sl->player_y;
     if(sl->map_ready[j][i] == '0')
     {
         sl->map_ready[j][i] = 'P';
-        //printf("P ======= %c\n",sl->map_ready[j][i]);
+        sl->map_ready[sl->player_y_bf][sl->player_x_bf] = '0';
         sl->player_x = i;
         sl->player_y = j;
         sl->player_steps++;
@@ -25,6 +27,7 @@ int    player_move(game_def *sl, int j, int i)
     if(sl->map_ready[j][i] == 'C')
     {
         sl->map_ready[j][i] = 'P';
+        sl->map_ready[sl->player_y_bf][sl->player_x_bf] = '0';
         sl->player_x = i;
         sl->player_y = j;
         sl->coins--;
@@ -33,7 +36,9 @@ int    player_move(game_def *sl, int j, int i)
     if (sl->map_ready[j][i] == 'E')
     {
         if (sl->coins != 0)
+        {
             return (0);
+        }
         printf("You won!!!\n");
         exit_window(sl);
     }

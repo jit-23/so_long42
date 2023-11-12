@@ -6,7 +6,7 @@
 /*   By: fde-jesu <fde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/05 01:28:22 by fde-jesu          #+#    #+#             */
-/*   Updated: 2023/11/06 03:26:21 by fde-jesu         ###   ########.fr       */
+/*   Updated: 2023/11/12 09:34:57 by fde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,22 +22,25 @@ void xpm_allocation(game_def *sl)
     sl->xpm[4].img = mlx_xpm_file_to_image(sl->mlx_con,"textures/Fox.xpm",&(sl->xpm[4].x),&(sl->xpm[4].y));
     
 }
+static void player_info(game_def *sl,int y, int x)
+{
+	mlx_put_image_to_window(sl->mlx_con,sl->mlx_win,sl->xpm[4].img,x * PIXEL, y * PIXEL);
+                    sl->player_x = x;
+                    sl->player_y = y;
+}
 void put_in_screen(game_def *sl)
 {
     int x;
     int y;
+	static int moves;
 
-    printf("5.1\n");
-    xpm_allocation(sl);
     y = 0;
-    //printf("map_y(cols) = %d \t map_y(cols) = %d\n",sl->map_y,sl->map_x);
+    printf("moves done: %d\n",moves++);
     while (y < sl->map_y) // y < sl->map_y    sl->map_ready[y]
      {
         x = 0;
         while( x < sl->map_x) // sl->map_ready[y][x] x < sl->map_x
-        {
-            //printf("mp[%d][%d] = %c \t",y,x, sl->map_ready[y][x]);
-            
+        {   
             if (sl->map_ready[y][x] == '0')
                 mlx_put_image_to_window(sl->mlx_con,sl->mlx_win,sl->xpm[0].img,x * PIXEL, y * PIXEL);
             if (sl->map_ready[y][x] == '1')
@@ -47,15 +50,9 @@ void put_in_screen(game_def *sl)
             if (sl->map_ready[y][x] == 'C')
                 mlx_put_image_to_window(sl->mlx_con,sl->mlx_win,sl->xpm[3].img,x * PIXEL, y * PIXEL);
             if (sl->map_ready[y][x] == 'P')
-                {
-                    mlx_put_image_to_window(sl->mlx_con,sl->mlx_win,sl->xpm[4].img,x * PIXEL, y * PIXEL);
-                    sl->player_x = x;
-                    sl->player_y = y;
-                }
+                    player_info(sl,y,x);
             x++;
         }
         y++;
-       // printf("\n");
-//        printf("y = %d\n", y);
     } 
 }
