@@ -6,7 +6,7 @@
 /*   By: fde-jesu <fde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/05 01:28:22 by fde-jesu          #+#    #+#             */
-/*   Updated: 2023/11/12 09:34:57 by fde-jesu         ###   ########.fr       */
+/*   Updated: 2023/11/12 10:12:39 by fde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void xpm_allocation(game_def *sl)
     sl->xpm[4].img = mlx_xpm_file_to_image(sl->mlx_con,"textures/Fox.xpm",&(sl->xpm[4].x),&(sl->xpm[4].y));
     
 }
-static void player_info(game_def *sl,int y, int x)
+void player_info(game_def *sl,int y, int x)
 {
 	mlx_put_image_to_window(sl->mlx_con,sl->mlx_win,sl->xpm[4].img,x * PIXEL, y * PIXEL);
                     sl->player_x = x;

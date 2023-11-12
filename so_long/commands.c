@@ -6,7 +6,7 @@
 /*   By: fde-jesu <fde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/05 02:22:46 by fde-jesu          #+#    #+#             */
-/*   Updated: 2023/11/06 03:29:36 by fde-jesu         ###   ########.fr       */
+/*   Updated: 2023/11/12 10:50:03 by fde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,9 @@ int command_input(int key_command, game_def *sl)
     //int key;
 	//printf("...%d\n", key_command);
 	if (key_command == 65362 || key_command == 65364)
-		keys_WS(key_command,sl);
+		keys_ws(key_command,sl);
 	if (key_command == 65361 || key_command == 65363)
-		keys_AD(key_command, sl);
+		keys_ad(key_command, sl);
     if (key_command == 65307 || key_command == 113)
         exit_window(sl);
     return (1);
