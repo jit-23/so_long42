@@ -6,13 +6,13 @@
 /*   By: fde-jesu <fde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 17:34:40 by fde-jesu          #+#    #+#             */
-/*   Updated: 2023/11/12 10:29:03 by fde-jesu         ###   ########.fr       */
+/*   Updated: 2023/11/13 02:40:59 by fde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-static	void	memory_alloc(game_def *sl)
+static void	memory_alloc(game_def *sl)
 {
 	ft_bzero(sl, sizeof(game_def));
 	sl->xpm = calloc(5, sizeof(t_image));
@@ -41,12 +41,12 @@ void	game_init(game_def *sl, char *file_name)
 	mlx_loop(sl->mlx_con);
 }
 
-int	main(int argc, char *argv[])
+int main(int argc, char *argv[])
 {
 	game_def	sl;
-
 	if (argc != 2)
 	{
+		printf("arg not right\n");
 		return (1);
 	}
 	memory_alloc(&sl);
