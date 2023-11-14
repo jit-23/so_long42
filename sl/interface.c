@@ -6,33 +6,33 @@
 /*   By: fde-jesu <fde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/05 01:28:22 by fde-jesu          #+#    #+#             */
-/*   Updated: 2023/11/12 23:39:33 by fde-jesu         ###   ########.fr       */
+/*   Updated: 2023/11/14 20:03:51 by fde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-void	xpm_allocation(game_def *sl)
+void	xpm_allocation(t_game_def *sl)
 {
 	sl->xpm[0].img = mlx_xpm_file_to_image(sl->mlx_con,
 			"textures/grass.xpm", &(sl->xpm[0].x), &(sl->xpm[0].y));
 	sl->xpm[1].img = mlx_xpm_file_to_image(sl->mlx_con,
-			"textures/wall.xpm", &(sl->xpm[1].x), &(sl->xpm[1].y));
+			"textures/tree.xpm", &(sl->xpm[1].x), &(sl->xpm[1].y));
 	sl->xpm[2].img = mlx_xpm_file_to_image(sl->mlx_con,
-			"textures/exit.xpm", &(sl->xpm[2].x), &(sl->xpm[2].y));
+			"textures/house.xpm", &(sl->xpm[2].x), &(sl->xpm[2].y));
 	sl->xpm[3].img = mlx_xpm_file_to_image(sl->mlx_con,
-			"textures/Star.xpm", &(sl->xpm[3].x), &(sl->xpm[3].y));
+			"textures/egg.xpm", &(sl->xpm[3].x), &(sl->xpm[3].y));
 	sl->xpm[4].img = mlx_xpm_file_to_image(sl->mlx_con,
 			"textures/Fox.xpm", &(sl->xpm[4].x), &(sl->xpm[4].y));
 }
 
-void	player_info(game_def *sl, int y, int x)
+void	player_info(t_game_def *sl, int y, int x)
 {
 	mlx_put_image_to_window(sl->mlx_con, sl->mlx_win,
 		sl->xpm[4].img, x * PIXEL, y * PIXEL);
 }
 
-static void	put_image(game_def *sl, int x, int y, char c)
+static void	put_image(t_game_def *sl, int x, int y, char c)
 {
 	if (c == '0')
 		mlx_put_image_to_window(sl->mlx_con, sl->mlx_win,
@@ -46,12 +46,9 @@ static void	put_image(game_def *sl, int x, int y, char c)
 	else if (c == 'C')
 		mlx_put_image_to_window(sl->mlx_con, sl->mlx_win,
 			sl->xpm[3].img, x * PIXEL, y * PIXEL);
-	else if (c == 'P')
-		mlx_put_image_to_window(sl->mlx_con, sl->mlx_win,
-			sl->xpm[4].img, x * PIXEL, y * PIXEL);
 }
 
-void	put_in_screen(game_def *sl)
+void	put_in_screen(t_game_def *sl)
 {
 	int			x;
 	int			y;

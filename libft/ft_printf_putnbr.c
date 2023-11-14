@@ -6,7 +6,7 @@
 /*   By: fde-jesu <fde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 21:29:03 by fde-jesu          #+#    #+#             */
-/*   Updated: 2023/09/13 16:16:31 by fde-jesu         ###   ########.fr       */
+/*   Updated: 2023/11/14 19:56:02 by fde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	ft_printf_putnbr(int nb, unsigned int *byte_count)
 {
 	if (nb == -2147483648)
-	{	
+	{
 		*byte_count += write(1, "-2147483648", 11);
 		return ;
 	}

@@ -6,7 +6,7 @@
 /*   By: fde-jesu <fde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 16:09:14 by fde-jesu          #+#    #+#             */
-/*   Updated: 2023/10/16 16:27:47 by fde-jesu         ###   ########.fr       */
+/*   Updated: 2023/11/14 19:53:36 by fde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,10 @@
 # include <unistd.h>
 # include <fcntl.h>
 # include <stdarg.h>
+
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 21
+# endif
 
 typedef struct s_list
 {
@@ -72,13 +76,6 @@ void	ft_lstclear(t_list **lst, void (*del)(void*));
 void	ft_lstdelone(t_list *lst, void (*del)(void*));
 void	ft_lstiter(t_list *lst, void (*f)(void *));
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
-
-//// gnl functions
-
-#ifndef BUFFER_SIZE
-#define BUFFER_SIZE 21
-#endif
-
 char	*get_next_line(int fd);
 char	*ft_read_the_line(int fd, char *fd_str);
 char	*ft_readed_line(char *src);
@@ -86,19 +83,15 @@ char	*ft_gnl_strchr(char *s, int c);
 char	*ft_move_start( char *start);
 char	*ft_gnl_strjoin(char *start, char *buff);
 char	*ft_join(char *new_fd_str, char *start, char *buff);
-
-
-//// ft_printf functions
-
-int				ft_printf(const char *string, ...);
-void			ft_check_specifier(const char *str, int i, va_list args,
-					unsigned int *byte_count);
-void			ft_hexa_xs(unsigned int nb, char type,
-					unsigned int *byte_count);
-void			ft_hexa_p(unsigned long long nb, unsigned int *byte_count);
-void			ft_printf_putnbr(int nb, unsigned int *byte_count);
-void			ft_putnbr_u(unsigned int nb, unsigned int *byte_count);
-int				ft_putchar(char c);
-void			ft_writing(char *str, unsigned int *byte_count);
+int		ft_printf(const char *string, ...);
+void	ft_check_specifier(const char *str, int i, va_list args,
+			unsigned int *byte_count);
+void	ft_hexa_xs(unsigned int nb, char type,
+			unsigned int *byte_count);
+void	ft_hexa_p(unsigned long long nb, unsigned int *byte_count);
+void	ft_printf_putnbr(int nb, unsigned int *byte_count);
+void	ft_putnbr_u(unsigned int nb, unsigned int *byte_count);
+int		ft_putchar(char c);
+void	ft_writing(char *str, unsigned int *byte_count);
 
 #endif

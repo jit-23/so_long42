@@ -6,11 +6,11 @@
 /*   By: fde-jesu <fde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/21 22:45:26 by fde-jesu          #+#    #+#             */
-/*   Updated: 2023/10/16 16:27:03 by fde-jesu         ###   ########.fr       */
+/*   Updated: 2023/11/14 19:55:42 by fde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
- #include "libft.h"
+#include "libft.h"
 
 char	*ft_gnl_strchr(char *str, int c)
 {
