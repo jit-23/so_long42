@@ -6,7 +6,7 @@
 /*   By: fde-jesu <fde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 17:34:40 by fde-jesu          #+#    #+#             */
-/*   Updated: 2023/11/14 20:04:11 by fde-jesu         ###   ########.fr       */
+/*   Updated: 2025/03/26 16:03:54 by fde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,8 @@ void	game_init(t_game_def *sl, char *file_name)
 		exit_msg(sl, "Can't init win.\n");
 	xpm_allocation(sl);
 	put_in_screen(sl);
-	mlx_key_hook(sl->mlx_win, command_input, sl);
+	mlx_hook(sl->mlx_win,2, 1L<<0, command_input, sl);
+	//mlx_key_hook(sl->mlx_win, command_input, sl);
 	mlx_hook(sl->mlx_win, 17, 0, (void *)close_w, sl);
 	mlx_loop(sl->mlx_con);
 }
